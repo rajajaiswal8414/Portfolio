@@ -1,60 +1,44 @@
-import * as SecureStore from "expo-secure-store";
+import { AuthUser, AuthTokens } from '@/types/auth';
 
-const BASE_URL = "http://192.168.0.3:8080/api/v1";
+const BASE_URL = 'http://192.168.0.3:8080/api/v1';
 
-export async function loginUser({
-    username,
-    password,
-}: {
+export interface LoginResponse {
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: number;           // seconds until access token expires
+  userDetailsDto: {
+    id: number;
+    name: string;
     username: string;
-    password: string;
-}) {
-    try {
-        const response = await fetch(
-            `${BASE_URL}/auth/login`,
-            {
-                method: "POST",
+    email: string;
+    roles: string[];           // e.g. ["ADMIN"]
+  };
+}
 
-                headers: {
-                    "Content-Type": "application/json",
-                },
+/**
+ * Sends credentials to the backend and returns raw response data.
+ * The caller (authStore.login) is responsible for persisting tokens.
+ */
+export async function loginUser(creds: {
+  username: string;
+  password: string;
+}): Promise<LoginResponse> {
+  const response = await fetch(`${BASE_URL}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      username:       creds.username,
+      password:       creds.password,
+      rememberMe:     true,
+      academicYearId: 1,
+    }),
+  });
 
-                body: JSON.stringify({
-                    username,
-                    password,
-                    rememberMe: true,
-                    academicYearId: 1,
-                }),
-            }
-        );
+  const data = await response.json();
 
-        const data = await response.json();
+  if (!response.ok) {
+    throw new Error(data?.message ?? 'Login failed. Please check your credentials.');
+  }
 
-        if (!response.ok) {
-            throw new Error(
-                data?.message || "Login failed"
-            );
-        }
-
-        // Store tokens securely
-        await SecureStore.setItemAsync(
-            "accessToken",
-            data.accessToken
-        );
-
-        await SecureStore.setItemAsync(
-            "refreshToken",
-            data.refreshToken
-        );
-
-        // Store user data
-        await SecureStore.setItemAsync(
-            "user",
-            JSON.stringify(data.userDetailsDto)
-        );
-
-        return data;
-    } catch (error: any) {
-        throw new Error(error.message);
-    }
+  return data;
 }
