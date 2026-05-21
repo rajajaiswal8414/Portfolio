@@ -33,6 +33,10 @@ export function getPrimaryRole(user: AuthUser): UserRole {
  *
  * Backend DB names → App UserRole:
  *   "ROLE_ADMIN"          → "ADMIN"
+ *   "ROLE_SCHOOL_ADMIN"   → "ADMIN"   ← actual DB name for admin users
+ *   "ROLE_HR_ADMIN"       → "ADMIN"
+ *   "ROLE_FINANCE_ADMIN"  → "ADMIN"
+ *   "ROLE_SUPER_ADMIN"    → "ADMIN"
  *   "ROLE_STUDENT"        → "STUDENT"
  *   "ROLE_TEACHER"        → "TEACHER"
  *   "ROLE_GUARDIAN"       → "GUARDIAN"
@@ -40,17 +44,37 @@ export function getPrimaryRole(user: AuthUser): UserRole {
  *   "ROLE_SECURITY_GUARD" → "GUARD"
  */
 const ROLE_MAP: Record<string, UserRole> = {
+  // Admin variants
   ADMIN:          'ADMIN',
+  SCHOOL_ADMIN:   'ADMIN',   // ← actual DB name
+  HR_ADMIN:       'ADMIN',
+  FINANCE_ADMIN:  'ADMIN',
+  SUPER_ADMIN:    'ADMIN',
+  // Other roles
   STUDENT:        'STUDENT',
   TEACHER:        'TEACHER',
   GUARDIAN:       'GUARDIAN',
   PRINCIPAL:      'PRINCIPAL',
-  SECURITY_GUARD: 'GUARD',   // ← backend uses SECURITY_GUARD, app uses GUARD
+  SECURITY_GUARD: 'GUARD',
 };
 
 export function normalizeRole(raw: string): UserRole {
   const stripped = raw.toUpperCase().replace(/^ROLE_/, '');
   return ROLE_MAP[stripped] ?? (stripped as UserRole);
+}
+
+/**
+ * Filter a mixed array (roles + permissions) to only role strings,
+ * then normalize them. The top-level LoginResponse.roles contains
+ * BOTH "ROLE_SCHOOL_ADMIN" AND permission strings like "adm:class:manage".
+ * Use this when reading from data.roles (top level).
+ * For dto.roles (userDetailsDto), it's already clean — just map directly.
+ */
+export function extractRoles(rawList: string[]): UserRole[] {
+  return rawList
+    .filter(r => r.startsWith('ROLE_'))   // drop permission strings
+    .map(normalizeRole)
+    .filter(r => r in ROLE_MAP || Object.values(ROLE_MAP).includes(r as UserRole));
 }
 
 // Map backend role strings to display-friendly labels

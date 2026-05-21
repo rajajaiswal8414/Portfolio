@@ -18,7 +18,7 @@ import { router } from "expo-router";
 import { VolumeOff, Volume2 } from "lucide-react-native";
 import { loginUser } from "@/services/auth"
 import { useAuthStore } from "@/store/authStore";
-import { AuthUser, UserRole, normalizeRole } from "@/types/auth";
+import { AuthUser, UserRole, normalizeRole, extractRoles } from "@/types/auth";
 
 import Animated, {
   FadeIn,
@@ -113,9 +113,9 @@ export default function WelcomeScreen() {
 
       const dto = data.userDetailsDto;
 
-      // Use top-level roles array (most reliable) and normalise:
-      // strips "ROLE_" prefix and maps SECURITY_GUARD → GUARD
-      const roles = (data.roles ?? dto.roles ?? []).map(normalizeRole);
+      // dto.roles is clean (only role strings like ["ROLE_SCHOOL_ADMIN"]).
+      // top-level data.roles is MIXED with permissions — do NOT use it directly.
+      const roles = extractRoles(dto.roles ?? []);
 
       const user: AuthUser = {
         id:             dto.userId,                                   // backend: userId
