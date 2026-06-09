@@ -141,12 +141,9 @@ const Hero: React.FC = () => {
               </button>
 
               <a
-                href="#download-resume"
+                href="/resume.pdf"
+                download="Raja_Jaiswal_Resume.pdf"
                 className="w-full sm:w-auto px-7 py-3.5 rounded-full text-base font-bold bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 hover:bg-slate-800 dark:hover:bg-white transform hover:-translate-y-1 transition-all flex items-center justify-center space-x-2 cursor-pointer"
-                onClick={(e) => {
-                  e.preventDefault();
-                  alert('Resume download triggered. (In production this downloads resume.pdf)');
-                }}
               >
                 <FiDownload className="w-4 h-4" />
                 <span>Download Resume</span>
