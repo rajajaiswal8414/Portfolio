@@ -7,8 +7,8 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: ${GMAIL_USERNAME:rajajaiswal8414@gmail.com}
-    password: ${GMAIL_PASSWORD:kwub lsns xlnd vnbh}
+    username: ${GMAIL_USERNAME:your-email@gmail.com}
+    password: ${GMAIL_PASSWORD:your-app-password}
     properties:
       mail:
         smtp:
@@ -22,5 +22,5 @@ spring:
 
 # Destination address where inquiries will be received
 admin:
-  email: ${ADMIN_EMAIL:rajajaiswal8414@gmail.com}
+  email: ${ADMIN_EMAIL:your-email@gmail.com}
 
