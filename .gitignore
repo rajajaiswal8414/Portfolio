@@ -1,0 +1,16 @@
+shiksha-intelligence/
+.DS_Store
+**/target/
+**/node_modules/
+**/.idea/
+**/.vscode/
+**/.settings/
+**/.project/
+**/.classpath/
+**/*.class
+**/*.jar
+**/*.war
+**/*.ear
+**/*.zip
+**/*.tar.gz
+**/*.log
