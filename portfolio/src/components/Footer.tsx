@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiGithub, FiLinkedin, FiMail, FiHeart } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiHeart } from 'react-icons/fi';
 
 const Footer: React.FC = () => {
   const handleScrollTo = (id: string) => {
@@ -52,20 +52,13 @@ const Footer: React.FC = () => {
             <FiGithub className="w-5 h-5" />
           </a>
           <a
-            href="https://linkedin.com/in/raja-jaiswal"
+            href="https://www.linkedin.com/in/raja-jaiswal-263aa2250/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-slate-400 hover:text-violet-500 transition-colors"
             aria-label="LinkedIn"
           >
             <FiLinkedin className="w-5 h-5" />
-          </a>
-          <a
-            href="mailto:rajajaiswal8414@gmail.com"
-            className="text-slate-400 hover:text-violet-500 transition-colors"
-            aria-label="Email"
-          >
-            <FiMail className="w-5 h-5" />
           </a>
         </div>
 

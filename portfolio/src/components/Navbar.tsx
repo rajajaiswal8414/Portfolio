@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useScrollSpy } from '../hooks/useScrollSpy';
 import ThemeToggle from './ThemeToggle';
-import { FiMenu, FiX, FiGithub, FiLinkedin, FiMail } from 'react-icons/fi';
+import { FiMenu, FiX, FiGithub, FiLinkedin } from 'react-icons/fi';
 import { motion, AnimatePresence, useScroll, useSpring } from 'framer-motion';
 
 const NAV_ITEMS = [
@@ -116,20 +116,13 @@ const Navbar: React.FC = () => {
                 <FiGithub className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com/in/raja-jaiswal"
+                href="https://www.linkedin.com/in/raja-jaiswal-263aa2250/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-2 text-slate-500 hover:text-violet-500 dark:text-slate-400 dark:hover:text-violet-400 transition-colors"
                 aria-label="LinkedIn"
               >
                 <FiLinkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:rajajaiswal8414@gmail.com"
-                className="p-2 text-slate-500 hover:text-violet-500 dark:text-slate-400 dark:hover:text-violet-400 transition-colors"
-                aria-label="Email"
-              >
-                <FiMail className="w-5 h-5" />
               </a>
             </div>
             <ThemeToggle />
@@ -191,18 +184,12 @@ const Navbar: React.FC = () => {
                     <FiGithub className="w-5 h-5" />
                   </a>
                   <a
-                    href="https://linkedin.com/in/raja-jaiswal"
+                    href="https://www.linkedin.com/in/raja-jaiswal-263aa2250/"
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="p-2.5 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400"
+                    className="p-2.5 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-650 dark:text-slate-350 hover:text-violet-500 transition-all"
                   >
                     <FiLinkedin className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="mailto:rajajaiswal8414@gmail.com"
-                    className="p-2.5 rounded-full bg-slate-100 dark:bg-slate-900 text-slate-600 dark:text-slate-400"
-                  >
-                    <FiMail className="w-5 h-5" />
                   </a>
                 </div>
 

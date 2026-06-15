@@ -203,7 +203,7 @@ const Contact: React.FC = () => {
                   <FiGithub className="w-5 h-5" />
                 </a>
                 <a
-                  href="https://linkedin.com/in/raja-jaiswal"
+                  href="https://www.linkedin.com/in/raja-jaiswal-263aa2250/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="p-3.5 rounded-2xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-650 dark:text-slate-350 hover:text-violet-500 dark:hover:text-violet-400 hover:shadow-md transition-all"

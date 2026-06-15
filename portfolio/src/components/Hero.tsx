@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { FiGithub, FiLinkedin, FiMail, FiDownload, FiArrowRight, FiCode } from 'react-icons/fi';
+import { FiGithub, FiLinkedin, FiDownload, FiArrowRight, FiCode } from 'react-icons/fi';
 import { FaJava, FaAws } from 'react-icons/fa';
 import { SiSpringboot, SiAngular, SiReact } from 'react-icons/si';
 
@@ -167,20 +167,13 @@ const Hero: React.FC = () => {
                 <FiGithub className="w-5 h-5" />
               </a>
               <a
-                href="https://linkedin.com/in/raja-jaiswal"
+                href="https://www.linkedin.com/in/raja-jaiswal-263aa2250/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="p-3.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-violet-500 dark:hover:text-violet-400 hover:shadow-lg dark:hover:shadow-violet-950/20 transform hover:-translate-y-1 transition-all"
                 aria-label="LinkedIn"
               >
                 <FiLinkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="mailto:rajajaiswal8414@gmail.com"
-                className="p-3.5 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:text-violet-500 dark:hover:text-violet-400 hover:shadow-lg dark:hover:shadow-violet-950/20 transform hover:-translate-y-1 transition-all"
-                aria-label="Email"
-              >
-                <FiMail className="w-5 h-5" />
               </a>
             </motion.div>
           </div>
